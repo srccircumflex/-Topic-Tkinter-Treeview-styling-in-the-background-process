@@ -55,7 +55,7 @@ is executed.
 
 However, if the styling code is defined/executed at position `[3]` or 
 `root.update_idletasks()` is only executed after the return at position `[1]`, 
-the parameter `font=[('selected', font)]` of 
+the parameter `font=[('selected', font)]` of
 
 ```python
 style = ttk.Style()
@@ -65,11 +65,33 @@ style.configure(
     weight="normal",
     size=10
 )
-font = tkFont.Font()
-font.configure(underline=True, weight="bold", size=10)
-style.map('Treeview', font=[('selected', font)], background=[], foreground=[('selected', '#000000')])
+__font = tkFont.Font()
+__font.configure(underline=True, weight="bold", size=10)
+style.map('Treeview', font=[('selected', __font)], background=[], foreground=[('selected', '#000000')])
 ```
 
 is not applied.
 
+_(v1)_
+
+### Update
+
+Ok, the problem is probably that the object `font` only exists locally in the function context. 
+So if `font` is saved in an existing object, e.g. by `global font` at the beginning of the 
+function, the styling `font=[('selected', font)]` is also applied.
+
+#### My guess
+
+The problem seems to be related to the python-tk interface and the garbage collector.
+
+So tk(-inter) uses the reference to the original object and does not create a copy or 
+a separate object. For some reason, this reference is not recognized by the garbage 
+collector and the local object is deleted after the function is finished. 
+Tk then handles the error internally.
+
+_(v2)_
+
+
 Asked on [Stackoverflow](https://stackoverflow.com/questions/77765331/topic-tkinter-treeview-styling-in-the-background-process).
+
+The entire code can be accessed on [Github](https://github.com/srccircumflex/-Topic-Tkinter-Treeview-styling-in-the-background-process).
