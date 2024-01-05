@@ -58,5 +58,3 @@ However, if the styling code is defined/executed at position `[3]` or
 the parameter `font=[('selected', font)]` is not applied.
 
 Asked on [Stackoverflow](...).
-
-The entire code can be accessed on [Github](...).
