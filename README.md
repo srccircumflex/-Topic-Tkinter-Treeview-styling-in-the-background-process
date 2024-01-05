@@ -55,6 +55,21 @@ is executed.
 
 However, if the styling code is defined/executed at position `[3]` or 
 `root.update_idletasks()` is only executed after the return at position `[1]`, 
-the parameter `font=[('selected', font)]` is not applied.
+the parameter `font=[('selected', font)]` of 
+
+```python
+style = ttk.Style()
+
+style.configure(
+    "Treeview",
+    weight="normal",
+    size=10
+)
+font = tkFont.Font()
+font.configure(underline=True, weight="bold", size=10)
+style.map('Treeview', font=[('selected', font)], background=[], foreground=[('selected', '#000000')])
+```
+
+is not applied.
 
 Asked on [Stackoverflow](https://stackoverflow.com/questions/77765331/topic-tkinter-treeview-styling-in-the-background-process).
