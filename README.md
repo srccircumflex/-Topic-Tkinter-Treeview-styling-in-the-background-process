@@ -57,4 +57,4 @@ However, if the styling code is defined/executed at position `[3]` or
 `root.update_idletasks()` is only executed after the return at position `[1]`, 
 the parameter `font=[('selected', font)]` is not applied.
 
-Asked on [Stackoverflow](https://stackoverflow.com/questions/77765331/topic-tkinter-treeview-styling-in-the-background-process)https://stackoverflow.com/questions/77765331/topic-tkinter-treeview-styling-in-the-background-process).
+Asked on [Stackoverflow](https://stackoverflow.com/questions/77765331/topic-tkinter-treeview-styling-in-the-background-process).
