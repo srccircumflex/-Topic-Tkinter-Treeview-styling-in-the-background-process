@@ -1,4 +1,6 @@
 
+finalized → [../widgets-tk](https://github.com/srccircumflex/widgets-tk)
+
 # \[Topic\] Tkinter Treeview styling in the background process
 
 Platform specification:
